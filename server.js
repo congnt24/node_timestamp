@@ -23,11 +23,12 @@ app.get("/:date", function (request, response) {
   
   if (isNaN(unixdate)){
     resDate = new Date(date)
-    res['unixtime'] = resDate.getTime()
+    res['unixtime'] = Number(resDate.getTime())/1000 //to second
     res['natural'] = toNatural(resDate)
   } else {
+    unixdate*=1000
     resDate = new Date(unixdate)
-    res['unixtime'] = resDate.getTime()
+    res['unixtime'] = Number(resDate.getTime())/1000
     res['natural'] = toNatural(resDate)
   }
   
